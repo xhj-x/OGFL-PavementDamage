@@ -51,7 +51,7 @@ This repository provides the implementation of our direction-aware framework for
 | YOLOv10n | 0.519 | 0.520 | 0.504 | 0.660 | 0.392 | 15.4M | 56.8G |
 | YOLOv11s | 0.596 | 0.599 | 0.592 | 0.698 | 0.493 | 9.4M | 21.3G |
 | YOLOv12n | 0.554 | 0.558 | 0.537 | 0.686 | 0.433 | 3.0M | 8.1G |
-| **Ours** | **0.612** | **0.607** | **0.607** | **0.696** | **0.538** | 27.9M | 82.8G |
+| **Ours** | **0.612** | **0.607** | **0.607** | **0.696** | **0.538** | 21.86M | 75.5G |
 
 *D00=Longitudinal, D10=Transverse, D20=Alligator, D40=Pothole*
 
@@ -165,7 +165,7 @@ datasets/
 
 | Model | Dataset | mAP50 | Download | Size |
 |-------|---------|-------|----------|------|
-| **Ours-Full** | RDD2022 | 0.612 | [Google Drive](https://drive.google.com/file/d/123EscIFqTjZjb1JOIogeMxCMipLsD6tO/view?usp=drive_link) | 42.0MB |
+| **Ours-Full** | RDD2022 | 0.612 | [Google Drive]() | 42.0MB |
 | Baseline+CIoU | RDD2022 | 0.602 | [Google Drive](https://drive.google.com/file/d/18QN-r-IeuEIfEMX6snqLUvkXfBVSECH6/view?usp=drive_link) | 62.8MB |
 | Baseline+DIoU | RDD2022 | 0.603 | [Google Drive](https://drive.google.com/file/d/1fOmCbC2q_h8T2esiPR-_cafslLrxRyuv/view?usp=drive_link) | 62.8MB |
 | YOLOv8m | RDD2022 | 0.588 | [Google Drive - C]() | 49.6MB |
@@ -288,6 +288,7 @@ def direction_aware_iou(box1, box2, alpha_h=1.0, alpha_v=1.5, CIoU=True):
 
 Integrated in: `utils/loss.py`
 
+![Aspect_ratio_Statistics](assets/results/aspect_ratio_analysis.png)
 Shape priors based on RDD2022 aspect ratio statistics:
 - D00 (Longitudinal): AR ≈ 0.55
 - D10 (Transverse): AR ≈ 5.05
@@ -384,13 +385,13 @@ We provide validation screenshots to verify reproducibility:
 
 **Direction Misclassification Correction**:
 
-![Direction Correction](assets/results/direction_correction.png)
+![Direction Correction](assets/results/direction_correction.tif)
 
 *Shows cases where baseline misclassifies D00↔D10 while our method predicts correctly*
 
 **Aspect Ratio Improvement**:
 
-![AR Improvement](assets/results/ar_improvement.png)
+![AR Improvement](assets/results/ar_improvement.tif)
 
 *Demonstrates 51% AR error reduction (29.5% → 14.0%)*
 
