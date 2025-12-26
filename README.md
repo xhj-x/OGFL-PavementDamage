@@ -34,10 +34,10 @@ This repository provides the implementation of our direction-aware framework for
 ## ✨ Key Features
 
 - ✅ **Direction-aware Feature Enhancement**: Explicit modeling of crack orientations
-- ✅ **Aspect Ratio-aware Loss**: Dynamic weighting based on crack geometry
-- ✅ **Cross-dataset Generalization**: 2.4× better retention on Indonesia dataset
+- ✅ **Aspect Ratio-aware Loss**:Weight distribution based on crack geometry
+- ✅ **Cross-dataset Generalization**: 0.241 mAP50 on Indonesia (+2.1% over best baseline) and 0.612 mAP50 on RDD2022 (+4.1%)
 - ✅ **Multi-platform Support**: Robust across UAV and ground-based imagery
-- ✅ **Reproducible**: Complete code, weights, and datasets provided
+- ✅ **Reproducible**: Core code and datasets provided
 
 ---
 
@@ -48,9 +48,9 @@ This repository provides the implementation of our direction-aware framework for
 | Method | mAP50 | D00 | D10 | D20 | D40 | Params | FLOPs |
 |--------|-------|-----|-----|-----|-----|--------|-------|
 | YOLOv8m | 0.588 | 0.576 | 0.597 | 0.684 | 0.514 | 25.9M | 78.7G |
-| YOLOv10n | 0.519 | 0.520 | 0.504 | 0.660 | 0.392 | 15.4M | 56.8G |
+| YOLOv10n | 0.519 | 0.520 | 0.504 | 0.660 | 0.392 | 2.7M | 8.2G |
 | YOLOv11s | 0.596 | 0.599 | 0.592 | 0.698 | 0.493 | 9.4M | 21.3G |
-| YOLOv12n | 0.554 | 0.558 | 0.537 | 0.686 | 0.433 | 3.0M | 8.1G |
+| YOLOv12n | 0.554 | 0.558 | 0.537 | 0.686 | 0.433 | 2.6M | 6.3G |
 | **Ours** | **0.612** | **0.607** | **0.607** | **0.696** | **0.538** | 21.86M | 75.5G |
 
 *D00=Longitudinal, D10=Transverse, D20=Alligator, D40=Pothole*
@@ -130,7 +130,7 @@ git clone https://github.com/sekilab/RoadDamageDetector.git
 
 ### Indonesia Dataset (Cross-dataset Evaluation)
 
-**Our collected dataset** from Jakarta and Bandung for testing cross-dataset generalization.
+A dataset collected from vehicle-captured dataset for evaluating cross-dataset generalization.
 
 **Statistics**:
 - Images: 3,321
@@ -168,7 +168,7 @@ datasets/
 | **Ours-Full** | RDD2022 | 0.612 | [Google Drive]() | 42.0MB |
 | Baseline+CIoU | RDD2022 | 0.602 | [Google Drive](https://drive.google.com/file/d/18QN-r-IeuEIfEMX6snqLUvkXfBVSECH6/view?usp=drive_link) | 62.8MB |
 | Baseline+DIoU | RDD2022 | 0.603 | [Google Drive](https://drive.google.com/file/d/1fOmCbC2q_h8T2esiPR-_cafslLrxRyuv/view?usp=drive_link) | 62.8MB |
-| YOLOv8m | RDD2022 | 0.588 | [Google Drive - C]() | 49.6MB |
+| YOLOv8m | RDD2022 | 0.588 | [Google Drive]() | 49.6MB |
 | YOLOv10n | RDD2022 | 0.532 | [Google Drive]() | 5.50MB |
 | YOLOv11s | RDD2022 | 0.596 | [Google Drive]() | 18.3MB |
 | YOLOv12n | RDD2022 | 0.591 | [Google Drive]() | 18.0MB |
@@ -288,7 +288,7 @@ def direction_aware_iou(box1, box2, alpha_h=1.0, alpha_v=1.5, CIoU=True):
 
 Integrated in: `utils/loss.py`
 
-![Aspect_ratio_Statistics](assets/results/aspect_ratio_analysis.png)
+![Aspect_ratio_Statistics](assets/results/aspect_ratio_analysis.svg)
 Shape priors based on RDD2022 aspect ratio statistics:
 - D00 (Longitudinal): AR ≈ 0.55
 - D10 (Transverse): AR ≈ 5.05
