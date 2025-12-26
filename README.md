@@ -385,13 +385,13 @@ We provide validation screenshots to verify reproducibility:
 
 **Direction Misclassification Correction**:
 
-![Direction Correction](assets/results/direction_correction.tif)
+![Direction Correction](assets/results/direction_correction.png)
 
 *Shows cases where baseline misclassifies D00↔D10 while our method predicts correctly*
 
 **Aspect Ratio Improvement**:
 
-![AR Improvement](assets/results/ar_improvement.tif)
+![AR Improvement](assets/results/ar_improvement.png)
 
 *Demonstrates 51% AR error reduction (29.5% → 14.0%)*
 
